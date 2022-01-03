@@ -6,11 +6,12 @@ const comment = require("../models").Comment;
 /*Creation post*/
 
 exports.createPost = (req, res, next) => {
+    
     const postObject = JSON.parse(req.body.post);
     console.log(req.body);
     console.log(postObject);
     delete post.Object.id;
-    const post = new Post({
+    const post = Post.build({// attache l'ID utilisateur 
         ...postObject /*... opérateur spread permet copie tous les élèments de req.body*/,
         imageUrl: `${req.protocol}://${req.get("host")}/images/${
             req.file.filename

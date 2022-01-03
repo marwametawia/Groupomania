@@ -1,0 +1,25 @@
+.headerContainer {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(26, 25, 25, 0.897);
+    color: white;
+}
+
+.headerLeft {
+    flex: 3;
+}
+.headerCenter {
+    flex: 5;
+    color: rgb(255, 7, 7);
+    font-size: 2rem;
+    margin-left: 15rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.headerRight {
+    flex: 4;
+}

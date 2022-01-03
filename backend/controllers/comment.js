@@ -9,7 +9,7 @@ exports.createComment = (req, res, next) => {
     console.log(req.body);
     console.log(commentObject);
     delete comment.Object.id;
-    const comment = new Post({
+    const comment = Post.build({
         ...commentObject /*... opérateur spread permet copie tous les élèments de req.body*/
         
     });
@@ -36,7 +36,7 @@ exports.deleteComment = (req, res, next) => {
         .then((comment) => {
                 Post.destroy({ id: req.params.id })
                     .then(() =>
-                        res.status(200).json({ message: "post supprimé !" })
+                        res.status(200).json({ message: "commentaire supprimé !" })
                     )
                     .catch((error) => res.status(400).json({ error }));
             ;

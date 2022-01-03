@@ -1,0 +1,9 @@
+.post{
+    width: 100%;
+    border-radius: 1rem;
+}
+.postTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

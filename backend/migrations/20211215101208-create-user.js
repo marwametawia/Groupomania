@@ -10,24 +10,25 @@ module.exports = {
             },
             firstName: {
                 type: Sequelize.STRING,
-                allowNull: false
+                allowNull: false,
             },
             lastName: {
                 type: Sequelize.STRING,
-                allowNull: false
+                allowNull: false,
             },
             password: {
                 type: Sequelize.STRING,
-                allowNull: false
+                allowNull: false,
             },
             email: {
                 type: Sequelize.STRING,
-                allowNull: false
+                allowNull: false,
+                unique: true,
             },
             isAdmin: {
-              type: Sequelize.BOOLEAN,
-              defaultValue: false,
-              allowNull: false
+                type: Sequelize.BOOLEAN,
+                defaultValue: false,
+                allowNull: false,
             },
             createdAt: {
                 allowNull: false,

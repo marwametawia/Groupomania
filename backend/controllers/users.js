@@ -54,9 +54,9 @@ exports.login = (req, res, next) => {
 };
 
 exports.deleteUser = (req, res, next) => {
-    User.findOne({ id: req.params.id })
+    User.findOne({ id: req.params.id }) // verifier que celui qui supprime est bien l'user
         .then((user) => {
-            User.destroy({ where: { id: userId } })
+            User.destroy({ where: { id: req.params.id } })
                 .then(() =>
                     res.status(200).json({ message: "user supprimé !" })
                 )

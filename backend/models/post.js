@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Post.init({
+    title: DataTypes.STRING,
     textContent: DataTypes.STRING
   }, {
     sequelize,
