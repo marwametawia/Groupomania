@@ -10,7 +10,7 @@ const jwt= require("jsonwebtoken")
 exports.createPost = (req, res, next) => {
     const text = req.body.textContent;
    
-    //recupéré userId
+    //recupérer userId
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const userId = decodedToken.userId;
