@@ -3,7 +3,7 @@ import Home from "./components/pages/Home";
 import Register from "./components/pages/Register";
 import {
     BrowserRouter as Router,
-    Switch,
+    Routes,
     Route,
     Link
   } from "react-router-dom";
@@ -14,20 +14,14 @@ import Profile from "./components/pages/Profile";
 function App() {
     return (
        <Router>
-           <Switch>
-               <Route exact path="/">
-                    <Home />
-               </Route>
-               <Route path="/login">
-                    <Login />
-               </Route>
-               <Route path="/register">
-                    <Register />
-               </Route>
-               <Route path="/profile:username">
-                    <Profile />
-               </Route>
-           </Switch>
+           <Routes>
+               <Route path="/" element={<Home />} />
+               <Route path="/login" element={<Login />} />
+               <Route path="/register" element={ <Register />} />
+               <Route path="/profile:username" element={<Profile />}/>
+
+
+           </Routes>
        </Router>)
 }
 

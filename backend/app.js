@@ -24,8 +24,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/auth", routeUser);
-app.use("api/post", routePost);
-app.use("api/comment", routeComment);
+app.use("/api/post", routePost);
+app.use("/api/:postId/comment", routeComment);
 
 const db = require("./models");
 

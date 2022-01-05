@@ -1,113 +1,157 @@
 const fs = require("fs");
-const post = require("../models").Post;
-const user = require("../models").User;
-const comment = require("../models").Comment;
+const Post = require("../models").post;
+const User = require("../models").user;
+const Comment = require("../models").comment;
+const db = require("../models/index")
+const jwt= require("jsonwebtoken")
 
-/*Creation post*/
-
+// POST
+//Créé un post
 exports.createPost = (req, res, next) => {
-    
-    const postObject = JSON.parse(req.body.post);
-    console.log(req.body);
-    console.log(postObject);
-    delete post.Object.id;
-    const post = Post.build({// attache l'ID utilisateur 
-        ...postObject /*... opérateur spread permet copie tous les élèments de req.body*/,
-        imageUrl: `${req.protocol}://${req.get("host")}/images/${
-            req.file.filename
-        }`,
+    const text = req.body.textContent;
+   
+    //recupéré userId
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const userId = decodedToken.userId;
+
+    if (text == '' ) {
+        return res.status(400).json({ error: 'post vide' });
+    }
+    db.user.findOne({
+        where: { id: userId }
+    })
+    .then(userFound => {
+        if(userFound) {
+            const post = db.post.build({
+                textContent: req.body.textContent,
+                userId: userId
+            })
+            post.save()
+            .then(() => res.status(201).json({ message: 'Message créé !' }, ))
+            .catch(error => {
+                console.log(error)
+                res.status(400).json({ error: 'Création du message échoué' })
+            });
+        } else {
+            console.log(error)
+            return res.status(404).json({ error: 'Utilisateur non trouvé' })
+        }
+    })
+    .catch(error => {
+        console.log(error)
+        res.status(500).json({ error: 'Recherche de l\'utilisateur échouée' })
     });
-    console.log(post);
-    post.save()
-        .then(() => res.status(201).json({ message: "post crée!" }))
-        .catch((error) => res.status(400).json({ error }));
 };
 
-/* retourne le post correspondant à l'Id fourni*/
+//GET
+// Voir tout les message
+exports.getAllPosts = (req, res, next) => {
+    //recupéré userId
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const userId = decodedToken.userId;
 
-exports.getOnePost = async (req, res) => {
-    try {
-        const { postId } = req.params;
-        const post = await post.findOne({
-            where: { id: postId },
-            include: [
-                {
-                    model: comment,
-                    as: "comments",
-                    include: [
-                        {
-                            model: user,
-                            as: "author",
-                        },
-                    ],
-                },
-                {
-                    model: user,
-                    as: "author",
-                },
-            ],
-        });
-        if (post) {
-            return res.status(200).json({ post });
+    db.Post.findAll({        
+        order: [['createdAt', "DESC"]] , //ordre date descendant
+        include: [
+            {
+                model: db.User,
+                attributes: [ 'lastName', 'firstName', 'avatar' ],
+                as: 'user'
+            },
+           
+        ]
+    })
+    .then(postFound => {        
+        if(postFound) {
+            res.status(200).json(postFound);
+        } else {
+            res.status(404).json({ error: 'Aucun message ' });
         }
-        return res
-            .status(404)
-            .send("post non trouvé");
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-};
-
-/* modification du post correspondant à l'Id fourni*/
-
-exports.modifyPost = async (req, res) => {
-    try {
-        const { postId } = req.params;
-        const [updated] = await post.update(req.body, {
-            where: { id: postId },
-        });
-        if (updated) {
-            const updatedPost = await post.findOne({ where: { id: postId } });
-            return res.status(200).json({ post: updatedPost });
-        }
-        throw new Error("Post non trouvé");
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-};
-
-/*Supprime le post correspondant à l'Id fourni*/
-exports.deletePost = async (req, res) => {
-    try {
-      const { postId } = req.params;
-      const deleted = await post.destroy({
-        where: { id: postId }
-      });
-      if (deleted) {
-        return res.status(204).send("Post supprimé");
-      }
-      throw new Error("Post non trouvé");
-    } catch (error) {
-      return res.status(500).send(error.message);
-    }
+    })
+    .catch(error => {
+        console.log(error),
+        res.status(500).send({ error: 'echec requête ' });
+    });
+}
+exports.getOnePost = (req, res, next) => {
+    db.Post.findOne({ where: {id: req.params.id} })
+    .then(post => {
+      console.log(post);
+      res.status(200).json(post)
+    })
+    .catch(error => res.status(404).json({ error }));
   };
+//PUT
+// Modifier un message
+exports.modifyPost = (req, res, next) => {
+    //recupéré userId
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const userId = decodedToken.userId;        
+    let postObject = {
+        ...req.body
+    }    
+    
+    console.log(postObject)
 
-exports.getAllPosts = async (req, res) => {
-    try {
-        const posts = await post.findAll({
-            include: [
-                {
-                    model: comment,
-                    as: "comments",
-                },
-                {
-                    model: user,
-                    as: "author",
-                },
-            ],
-        });
-        return res.status(200).json({ posts });
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-};
+    db.Post.findOne({
+        where: {  id: req.params.postId },
+    })
+    .then(postFound => {
+        if(postFound.userId == userId){
+            if(postFound) {
+                db.Post.update(postObject, {
+                    where: { id: req.params.postId}
+                })
+                .then(post => res.status(200).json({ message: 'Message modifié' }))
+                .catch(error => {
+                    console.log(error)
+                    res.status(400).json({ error: 'Modification du message échoué' })
+                })
+            }
+            else {
+                res.status(404).json({ error: 'Aucun message trouvé :(' });
+            }
+        }
+        else {
+            res.status(403).json({ error: 'Vous n\'avez pas le droit de modifier ce message' });
+        }
+    })
+    .catch(error => {
+        console.log(error)
+        res.status(500).json({ error: 'Modification du message échoué' })
+    });
+}
+
+//DELETE
+// Supprimer un message
+exports.deletePost = (req, res, next) => {
+    db.Post.findOne({
+        attributes: ['id'],
+        where: { id: req.params.postId }
+    })
+    .then(post => {
+        if(req.body.userId == post.userId || req.body.isAdmin ){
+            if(post) {
+                        db.Post.destroy({
+                            where: { id: req.params.postId }
+                        })
+                        .then(() => res.status(200).json({ message: 'post supprimé' }))
+                        .catch(() => res.status(500).json({ error: 'Suppression du post échouée' }));
+                    
+                } 
+            else {
+                return res.status(404).json({ error: 'Aucun message trouvé '})
+            }
+        }
+        else {
+            res.status(403).json({ error: 'Vous n\'avez pas le droit de supprimer ce message' });
+        }
+    })
+    .catch(error => {
+        console.log(error)
+        res.status(500).json({ error: 'Suppression du message échoué' })
+    });
+}

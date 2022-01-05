@@ -7,18 +7,22 @@ import axios from "axios"
 export default function Feed() {
     const [posts, setPosts]=useState([]);
 
-    useEffect(() => {
+    /*useEffect(() => {
         axios.get
+        //setPosts(res.data)
         return () => {
-            cleanup
+
         }
-    }, [input])
-    
+    }, //[input])*/
+
+    // Exemple de structure posts = [{textContent : "article"}, { textContent "autre article"}]
     
     return (
         <div className="feedContainer">
             <Share />
-            <Post />
+            {posts.map((item) => (
+                <Post textContent={item.textContent}/>
+            ))}
         </div>
     );
 }

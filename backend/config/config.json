@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "postgres",
+    "username": "marwa",
     "password": "toto",
     "database": "postgresql_dev",
     "host": "127.0.0.1",
@@ -8,17 +8,17 @@
     "dialectOptions": {"ssl":false}
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
+    "username": "marwa",
+    "password": "toto",
+    "database": "postgresql_dev",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "marwa",
+    "password": "toto",
+    "database": "postgresql_dev",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   }
 }

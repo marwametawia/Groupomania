@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c555b8e8-836a-445c-9f28-88639fd974cf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middleware/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middleware/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/migrations/20211215101208-create-user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/migrations/20211215125626-create-post.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/migrations/20211217121034-create-comment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Feed.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Feed.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Share.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Share.jsx" afterDir="false" />
+    </list>
+    <list id="38d4dd5d-5a00-4907-ad91-190ccb723764" name="Changes by valau" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Feed.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Feed.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Share.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Share.jsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx">
+      <ranges>
+        <range start1="2" end1="3" start2="2" end2="3" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="14" end1="15" start2="14" end2="16" changelist="c555b8e8-836a-445c-9f28-88639fd974cf" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/frontend/src/components/Feed/Feed.jsx">
+      <ranges>
+        <range start1="9" end1="10" start2="9" end2="10" changelist="c555b8e8-836a-445c-9f28-88639fd974cf" />
+        <range start1="11" end1="11" start2="11" end2="12" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="12" end1="13" start2="13" end2="14" changelist="c555b8e8-836a-445c-9f28-88639fd974cf" />
+        <range start1="14" end1="16" start2="15" end2="18" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="20" end1="21" start2="22" end2="25" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/frontend/src/components/Feed/Share.jsx">
+      <ranges>
+        <range start1="1" end1="1" start2="1" end2="3" changelist="c555b8e8-836a-445c-9f28-88639fd974cf" />
+        <range start1="2" end1="2" start2="4" end2="23" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="6" end1="9" start2="27" end2="30" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+      </ranges>
+    </file>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="22rksow7FoM7eq5OGsm75fUrttT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c555b8e8-836a-445c-9f28-88639fd974cf" name="Changes" comment="" />
+      <created>1640603305930</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1640603305930</updated>
+      <workItem from="1640603307742" duration="1375000" />
+      <workItem from="1641287770873" duration="5239000" />
+      <workItem from="1641372681205" duration="5122000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
