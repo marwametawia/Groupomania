@@ -7,7 +7,11 @@ export default function Profile() {
         <Header />
        <button className="logOut">Deconnexion</button>
        <button className="modifyProfile">Modifier mon profil</button>
-       <button className="deleteAccount">Supprimer mon compte </button>
+       <button className="deleteAccount" onClick={()=>{
+                                    window.localStorage.removeItem("userData")
+                                    window.localStorage.removeItem("token")
+                                    navigate("/login")
+                                }}>Supprimer mon compte </button>
         </>
     )
 }

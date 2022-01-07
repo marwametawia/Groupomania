@@ -11,6 +11,7 @@ exports.signup = (req, res, next) => {
     let firstName = req.body.firstName;
     let email = req.body.email;
     let password = req.body.password;
+    let isAdmin= req.body.isAdmin;
     //Champs complet
     if (
         lastName == null ||
@@ -43,7 +44,8 @@ exports.signup = (req, res, next) => {
                             firstName: firstName,
                             email: email,
                             password: hash,
-                            isAdmin: false,
+                            isAdmin: isAdmin,
+                            
                         });
                         user.save()
                             .then(() =>
@@ -165,6 +167,9 @@ exports.modifyUserProfile = async (req, res, next) => {
     const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
     const userId = decodedToken.userId;
     req.body.user = userId;
+    let postUser = {
+        ...req.body,
+    };
 
     let userObject = {
         ...req.body,
@@ -189,7 +194,7 @@ exports.modifyUserProfile = async (req, res, next) => {
         where: { id: userId },
     })
         .then((userFound) => {
-            if (userFound) {
+            if (req.params.id == userId ) {
                 db.user.update(userObject, {
                     where: { id: userId },
                 })
@@ -216,12 +221,16 @@ exports.modifyUserProfile = async (req, res, next) => {
 // Suppression de l'user
 exports.deleteAccount = (req, res, next) => {
     const id = req.params.id;
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+    const userId = decodedToken.userId;
+    const isAdmin = decodedToken.isAdmin;
     db.user.findOne({
-        attributes: ["id"],
+        attributes: ['id'],
         where: { id: id },
     })
         .then((user) => {
-            if (user) {
+            if (id == userId || isAdmin) {
                 db.user.destroy({
                     where: { id: id },
                 })
@@ -236,11 +245,11 @@ exports.deleteAccount = (req, res, next) => {
             } else {
                 return res
                     .status(404)
-                    .json({ error: "Utilisateur non trouvé" });
+                    .json({ error: "vous n'avez pas le droit de supprimer ce compte" });
             }
         })
         .catch((error) => {
             console.log(error);
-            res.status(500).json({ error: "Suppression du profil échouée" });
+            res.status(500).json(id);
         });
 };

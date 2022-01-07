@@ -3,15 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="c555b8e8-836a-445c-9f28-88639fd974cf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/comment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middleware/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middleware/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/migrations/20220104153601-create-comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/migrations/20220104153601-create-comment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/migrations/20220104154839-create-post.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/migrations/20220104154839-create-post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/comment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Feed.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Feed.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Header/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/register.css" afterDir="false" />
     </list>
-    <list id="38d4dd5d-5a00-4907-ad91-190ccb723764" name="Changes by valau" comment="" />
+    <list id="38d4dd5d-5a00-4907-ad91-190ccb723764" name="Changes by valau" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Feed.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Feed.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Login.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +34,47 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/frontend/src/components/Feed/Feed.jsx">
+      <ranges>
+        <range start1="4" end1="5" start2="4" end2="7" changelist="c555b8e8-836a-445c-9f28-88639fd974cf" />
+        <range start1="6" end1="7" start2="8" end2="9" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="8" end1="8" start2="10" end2="12" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="9" end1="14" start2="13" end2="24" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="15" end1="16" start2="25" end2="25" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="17" end1="18" start2="26" end2="34" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="22" end1="22" start2="38" end2="39" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="23" end1="24" start2="40" end2="41" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="25" end1="25" start2="42" end2="43" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/frontend/src/App.jsx">
+      <ranges>
+        <range start1="0" end1="1" start2="0" end2="1" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="7" end1="8" start2="7" end2="8" changelist="c555b8e8-836a-445c-9f28-88639fd974cf" />
+        <range start1="14" end1="14" start2="14" end2="16" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="17" end1="19" start2="19" end2="21" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="20" end1="23" start2="22" end2="23" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/frontend/src/components/layout/Header/Header.jsx">
+      <ranges>
+        <range start1="3" end1="4" start2="3" end2="8" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="6" end1="6" start2="10" end2="25" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="11" end1="12" start2="30" end2="31" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="14" end1="15" start2="33" end2="34" changelist="c555b8e8-836a-445c-9f28-88639fd974cf" />
+        <range start1="25" end1="25" start2="44" end2="54" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/frontend/src/components/pages/Login.jsx">
+      <ranges>
+        <range start1="1" end1="1" start2="1" end2="6" changelist="c555b8e8-836a-445c-9f28-88639fd974cf" />
+        <range start1="2" end1="3" start2="7" end2="45" changelist="38d4dd5d-5a00-4907-ad91-190ccb723764" />
+        <range start1="11" end1="17" start2="53" end2="57" changelist="c555b8e8-836a-445c-9f28-88639fd974cf" />
+        <range start1="18" end1="19" start2="58" end2="60" changelist="c555b8e8-836a-445c-9f28-88639fd974cf" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -36,6 +92,23 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -46,7 +119,7 @@
       <updated>1640603305930</updated>
       <workItem from="1640603307742" duration="1375000" />
       <workItem from="1641287770873" duration="5239000" />
-      <workItem from="1641372681205" duration="6445000" />
+      <workItem from="1641372681205" duration="23071000" />
     </task>
     <servers />
   </component>

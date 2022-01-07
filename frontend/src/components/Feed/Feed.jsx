@@ -2,27 +2,45 @@ import "./feed.css";
 import Share from "./Share";
 import Post from "./Post";
 import { useState, useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
+import {useNavigate} from "react-router-dom"
 
-export default function Feed() {
+
+export default function Feed({token}) {
     const [posts, setPosts]=useState([]);
+    const navigate = useNavigate()
+    const tokenW = window.localStorage.getItem("token")
 
-    /*useEffect(() => {
-        axios.get
-        //setPosts(res.data)
-        return () => {
-
+    useEffect(() => {
+        async function request() {
+            let res;
+            try{
+                res = await axios.get("http://localhost:8080/api/post/",{headers : {
+                     authorization : `Bearer ${tokenW}`
+                    }})
+            }catch(error){
+                throw error
+            }
+            setPosts(res.data)
         }
-    }, //[input])*/
 
-    // Exemple de structure posts = [{textContent : "article"}, { textContent "autre article"}]
+        if (!tokenW || tokenW === "") {
+            navigate("/login")
+        }else{
+            request()
+        }
+    }, [tokenW])
+
+    console.log(posts)
     
     return (
         <div className="feedContainer">
             <Share />
+            
             {posts.map((item) => (
-                <Post textContent={item.textContent}/>
+                <div key={item.id}>{item.textContent}</div>
             ))}
+            <Post />
         </div>
     );
 }

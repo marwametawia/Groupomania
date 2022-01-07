@@ -12,6 +12,7 @@ router.post('/', auth, postCtrl.createPost);
 //GET
 router.get('/', auth, postCtrl.getAllPosts);
 router.get('/:postId', auth, postCtrl.getOnePost);
+
 //PUT
 router.put('/:postId', auth, postCtrl.modifyPost);
 //DELETE

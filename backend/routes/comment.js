@@ -8,8 +8,9 @@ const commentCtrl = require("../controllers/comment");
 // POST
 router.post("/", auth, commentCtrl.createComment);
 //GET
-router.get("/", auth, commentCtrl.getAllComments); // querystring ou searchparams
-router.get("/:commentId", auth, commentCtrl.getOneComment);
+router.get("/", auth, commentCtrl.getAllComments); // 
+
+
 //DELETE
 router.delete("/:commentId", auth, commentCtrl.deleteComment);
 
