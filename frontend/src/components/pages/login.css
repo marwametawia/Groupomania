@@ -58,8 +58,8 @@
       height: 50px;
       border-radius: 10px;
       border: none;
-      background-color: #1775ee;
-      color: white;
+      background-color: whitesmoke;
+      color: black;
       font-size: 20px;
       font-weight: 500;
       cursor: pointer;
@@ -73,10 +73,7 @@
     cursor: not-allowed;
   }
   
-  .loginForgot{
-      text-align: center;
-      color: #1775ee;
-  }
+  
   
   .loginRegisterButton{
       width: 60%;

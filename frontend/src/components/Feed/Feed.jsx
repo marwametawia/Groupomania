@@ -37,9 +37,7 @@ export default function Feed({token}) {
         <div className="feedContainer">
             <Share />
             
-            {posts.map((item) => (
-                <div key={item.id}>{item.textContent}</div>
-            ))}
+           
             <Post />
         </div>
     );

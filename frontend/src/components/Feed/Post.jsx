@@ -1,4 +1,5 @@
 import "./post.css";
+import Comment from "./Comment";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +9,7 @@ export default function Post() {
    
     const navigate = useNavigate();
     const tokenW = window.localStorage.getItem("token");
-    const userData = JSON.parse(window.localStorage.getItem("userData"));
+  
 
     useEffect(() => {
         async function request() {
@@ -72,6 +73,7 @@ export default function Post() {
                                 deletePost(item.id)}}>
                                 Supprimer
                             </button>
+                            <Comment postId={item.id}/>
                         </div>
                         </div>
                     ))}

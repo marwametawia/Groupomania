@@ -26,7 +26,7 @@ export default function Share() {
             <div className="shareContainer">
                 
                     <input placeholder="Quoi de neuf ?" className="shareInput" value={post} onChange={handleChange}/>
-                    <button className="shareButton" >Partager</button>
+                    <button onClick={()=>{handleSubmit}} className="shareButton" >Partager</button>
 
             
             </div>

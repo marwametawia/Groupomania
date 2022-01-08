@@ -13,18 +13,16 @@ exports.createComment = async (req, res, next) => {
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const userId = decodedToken.userId;
     const postId = req.params.postId;
-
-    await db.post
+ 
+     db.post
     .findOne({
-        attributes: ["id",],
-        where: { id: req.params.postId },
-    })
-    .then(postFound => {
+        where: { id: postId }}
+    ).then(postFound => {
         if(postFound) {
             let comment = db.comment.build({
                 textContent: req.body.textContent,
                 postId: req.params.postId,
-                userId: userId 
+                userId: userId
             })
             comment.save()
                 .then(() => res.status(201).json({ message: 'Commentaire créé !' }))
@@ -41,7 +39,6 @@ exports.createComment = async (req, res, next) => {
         res.status(500).json(console.log(postId))
     });
 }
-
 //GET
 
 
@@ -49,7 +46,7 @@ exports.createComment = async (req, res, next) => {
 exports.getAllComments = (req, res, next) => {
     db.comment.findAll({
         order: [['updatedAt', "ASC"]],
-        where: { commentId: req.params.commentId },
+        where: { postId: req.params.postId },
         include: [{
             model: db.user,
             attributes: [ 'lastName', 'firstName' ],

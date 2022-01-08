@@ -2,6 +2,7 @@ const express = require("express");
 const routeUser = require("./routes/users");
 const routePost= require("./routes/post");
 const routeComment = require("./routes/comment");
+
 const helmet = require("helmet");
 const path = require('path');
 
@@ -27,7 +28,8 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use("/api/user", routeUser);
 app.use("/api/post", routePost);
-app.use("/api/:postId/comment", routeComment);
+app.use("/api/comment", routeComment);
+
 
 const db = require("./models");
 
