@@ -9,7 +9,7 @@ const commentCtrl = require("../controllers/comment");
 router.post("/:postId/comment/", auth, commentCtrl.createComment);
 
 //GET
-router.get("/:postId/comment", auth, commentCtrl.getAllComments); // 
+router.get("/:postId/comment/", auth, commentCtrl.getAllComments); // 
 
 
 //DELETE

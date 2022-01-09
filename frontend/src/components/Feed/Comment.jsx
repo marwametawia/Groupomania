@@ -13,7 +13,7 @@ export default function Comment({ postId }) {
         let res
         try {
             res = await axios.delete(
-                `http://localhost:8080/api/comment/${commentId}`,
+                `http://localhost:8080/api/post/${postId}/comment/${commentId}/`,
                 {
                     headers: {
                         authorization: `Bearer ${tokenW}`,
@@ -26,7 +26,7 @@ export default function Comment({ postId }) {
     }
 
     async function getComments() {
-        return await axios.get(`http://localhost:8080/api/comment/${postId}`, {
+        return await axios.get(`http://localhost:8080/api/post/${postId}/comment/`, {
             headers: {
                 authorization: `Bearer ${tokenW}`,
             },

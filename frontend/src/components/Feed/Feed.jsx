@@ -6,7 +6,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom"
 
 
-export default function Feed({token}) {
+export default function Feed() {
     const [posts, setPosts]=useState([]);
     const navigate = useNavigate()
     const tokenW = window.localStorage.getItem("token")
@@ -29,7 +29,7 @@ export default function Feed({token}) {
         }else{
             request()
         }
-    }, [tokenW])
+    }, [])
 
     console.log(posts)
     

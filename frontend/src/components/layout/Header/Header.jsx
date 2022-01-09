@@ -16,7 +16,14 @@ export default function Header() {
         async function getUserData() {
             let res;
             try {
-                res = await axios.get(``)
+                 res = await axios.delete(
+                `http://localhost:8080/api/post/${userData.userId}`,
+                {
+                    headers: {
+                        authorization: `Bearer ${tokenW}`,
+                    },
+                }
+            );
             }catch(error){
                 throw error
             }
