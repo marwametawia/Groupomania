@@ -38,7 +38,7 @@ export default function Header() {
                 <span className="logoName">GroupoSocial</span>
             </div>
             <div className="headerRight">
-                <span className="headerLink">Homepage</span>
+                
                 <div className="headerIcons">
                     <div className="iconItems">
                         <Person />

@@ -75,6 +75,8 @@ exports.deleteComment = (req, res, next) => {
     const userId = decodedToken.userId;
     const isAdmin = decodedToken.isAdmin;
     console.log('ici')
+
+    
     db.comment.findOne({
         attributes: ['id','userId'],
         where: { id: req.params.commentId }

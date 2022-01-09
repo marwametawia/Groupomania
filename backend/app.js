@@ -28,7 +28,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use("/api/user", routeUser);
 app.use("/api/post", routePost);
-app.use("/api/comment", routeComment);
+app.use("/api/post", routeComment);
 
 
 const db = require("./models");

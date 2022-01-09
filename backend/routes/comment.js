@@ -6,13 +6,13 @@ const auth = require("../middleware/auth");
 const commentCtrl = require("../controllers/comment");
 
 // POST
-router.post("/:postId", auth, commentCtrl.createComment);
+router.post("/:postId/comment/", auth, commentCtrl.createComment);
 
 //GET
-router.get("/:postId", auth, commentCtrl.getAllComments); // 
+router.get("/:postId/comment", auth, commentCtrl.getAllComments); // 
 
 
 //DELETE
-router.delete("/:commentId", auth, commentCtrl.deleteComment);
+router.delete("/comment/:commentId", auth, commentCtrl.deleteComment);
 
 module.exports = router;
