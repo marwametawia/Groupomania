@@ -13,6 +13,6 @@ router.get("/:postId/comment", auth, commentCtrl.getAllComments); //
 
 
 //DELETE
-router.delete("/comment/:commentId", auth, commentCtrl.deleteComment);
+router.delete("/:postId/comment/:commentId/", auth, commentCtrl.deleteComment);
 
 module.exports = router;

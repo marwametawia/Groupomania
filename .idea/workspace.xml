@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c555b8e8-836a-445c-9f28-88639fd974cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/migrations/20220104152316-create-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/migrations/20220104152316-create-user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/comment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/comment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Share.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Share.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Register.jsx" afterDir="false" />
     </list>
     <list id="38d4dd5d-5a00-4907-ad91-190ccb723764" name="Changes by valau" comment="" />
     <option name="SHOW_DIALOG" value="false" />

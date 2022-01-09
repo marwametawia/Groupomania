@@ -74,11 +74,10 @@ exports.deleteComment = (req, res, next) => {
     const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
     const userId = decodedToken.userId;
     const isAdmin = decodedToken.isAdmin;
-    console.log('ici')
-
+   
     
     db.comment.findOne({
-        attributes: ['id','userId'],
+        
         where: { id: req.params.commentId }
     })
     .then(commentFound => {
