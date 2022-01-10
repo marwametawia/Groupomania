@@ -58,14 +58,10 @@ export default function Register() {
     return (
         <div className="register">
             <div className="registerWrapper">
-                <div className="registerLeft">
-                    <h3 className="registerLogo">Grouposocial</h3>
-                    <span className="logoDescription">
-                        Share more than work
-                    </span>
-                </div>
+                
                 <div className="loginRight">
                 <form className="loginBox" onSubmit={handleSubmit}>
+                   
                 <input placeholder="nom de famille" className="loginInput" onChange={handleLastName} value={lastName}/>
                 <input placeholder="prénom" className="loginInput" onChange={handleFirstName} value={firstName}/>
                         <input placeholder="Email" className="loginInput" onChange={handleEmail} value={email}/>

@@ -52,10 +52,7 @@ export default function Login({setToken}) {
         <EmptyLayout>
             <div className="login">
                 <div className="loginWrapper">
-                    <div className="loginLeft">
-                        <h3 className="loginLogo">Grouposocial</h3>
-                        <span className="loginDescription">Share more than work</span>
-                    </div>
+                   
                     <div className="loginRight">
                         <form className="loginBox" onSubmit={handleSubmit}>
                             <input placeholder="Email" className="loginInput" onChange={handleEmail} value={email}/>
