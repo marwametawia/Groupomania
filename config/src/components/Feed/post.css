@@ -1,0 +1,17 @@
+.postCenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.postContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-color: rgba(255, 0, 0, 0.788);
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+}

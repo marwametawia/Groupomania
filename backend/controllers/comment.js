@@ -8,7 +8,7 @@ const db = require('../models/index');
 // POST
 // Créer un commentaire
 exports.createComment = async (req, res, next) => {
-    //recupéré userId
+    
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const userId = decodedToken.userId;

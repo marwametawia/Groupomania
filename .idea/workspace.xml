@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c555b8e8-836a-445c-9f28-88639fd974cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" />
     </list>
     <list id="38d4dd5d-5a00-4907-ad91-190ccb723764" name="Changes by valau" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +61,7 @@
       <updated>1640603305930</updated>
       <workItem from="1640603307742" duration="1375000" />
       <workItem from="1641287770873" duration="5239000" />
-      <workItem from="1641372681205" duration="35291000" />
+      <workItem from="1641372681205" duration="36627000" />
     </task>
     <servers />
   </component>

@@ -12,36 +12,41 @@ Le département RH de Groupomania a laissé libre cours à son imagination pour 
 Outils necessaires: Docker (en téléchargement ici: https://www.docker.com/products/docker-desktop)
 
 ## Installer le projet 
-Clonnez le github
-##Pour le backend:
-Télécharger docker desktop et créer un compte
-Dans le terminal écrire:
-docker pull postgres
-puis
 
-docker run --name postgresql_dev -e POSTGRES_PASSWORD=toto -d -p 5432:5432  postgres
+Clonez le github
 
+## Pour le backend:
 
-ensuite se rendre dans la racine du projet:
-Puis écrire dans le terminal
-cd backend
+Créer un container pour la base de données :
+
 ```
+docker pull postgres
+docker run --name postgresql_dev -e POSTGRES_PASSWORD=toto -d -p 5432:5432 postgres
+```
+
+Depuis la racine du projet:
+```
+cd backend
 npm install
 ```
-puis lancez le server :
- ```
-nodemon server
+
+Démarrer le server :
+```bash
+npm run dev # pour dev 
+npm start # pour prod
 ```
 
 ## Pour le frontend:
-cd frontend
-Puis 
+
+Depuis la racine du projet:
 
 ```
+cd frontend
 npm install
 ```
-puis lancez le server :
- ```
+
+Démarrer le server :
+```
 npm run dev
 ```
 
