@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c555b8e8-836a-445c-9f28-88639fd974cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Comment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Comment.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/Post.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/post.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/post.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Feed/share.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Feed/share.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/Header/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Profile.jsx" afterDir="false" />
     </list>
     <list id="38d4dd5d-5a00-4907-ad91-190ccb723764" name="Changes by valau" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +56,7 @@
       <updated>1640603305930</updated>
       <workItem from="1640603307742" duration="1375000" />
       <workItem from="1641287770873" duration="5239000" />
-      <workItem from="1641372681205" duration="34689000" />
+      <workItem from="1641372681205" duration="35291000" />
     </task>
     <servers />
   </component>

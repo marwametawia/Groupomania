@@ -3,7 +3,7 @@ import Comment from "./Comment";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate , Link} from "react-router-dom";
-import OnePost from "./OnePost";
+
 
 export default function Post() {
     const [posts, setPosts] = useState([]);

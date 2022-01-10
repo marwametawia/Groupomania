@@ -9,7 +9,6 @@ import {
   } from "react-router-dom";
 import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
-import OnePost from "./components/Feed/OnePost";
 
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
                <Route path="/login" element={<Login setToken={setToken}/>} />
                <Route path="/register" element={ <Register />} />
                <Route path="/profile/" element={<Profile />}/>
-               <Route path="/post/" element={<OnePost />}/>
+               
            </Routes>
        </Router>)
 }
