@@ -6,24 +6,28 @@ import {
     Routes,
     Route,
 
-  } from "react-router-dom";
+} from "react-router-dom";
 import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
+import {PrivateRoute} from './components/PrivateRoute';
+import {Toaster} from 'react-hot-toast';
 
 
 function App() {
-    const [token, setToken] = useState("")
-
     return (
-       <Router>
-           <Routes>
-               <Route path="/" element={<Home token={token}/>} />
-               <Route path="/login" element={<Login setToken={setToken}/>} />
-               <Route path="/register" element={ <Register />} />
-               <Route path="/profile/" element={<Profile />}/>
-               
-           </Routes>
-       </Router>)
+        <div>
+            <Toaster/>
+            <Router>
+                <Routes>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/register" element={<Register/>}/>
+
+                    <Route path="/" element={<PrivateRoute><Home/></PrivateRoute>}/>
+                    <Route path="/profile/" element={<PrivateRoute><Profile/></PrivateRoute>}/>
+                </Routes>
+            </Router>
+        </div>
+    )
 }
 
 export default App;

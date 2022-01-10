@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import "./comment.css";
+import {useJWT} from '../../hooks/useJWT';
 
 export default function Comment({ postId }) {
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [commentsData, setCommentsData] = useState([]);
-    const tokenW = window.localStorage.getItem("token");
+    const tokenW = useJWT();
     const [comment, setComment] = useState("");
 
 
@@ -53,15 +54,20 @@ export default function Comment({ postId }) {
     }
 
     async function handleSubmit(postId) {
-        let res;
         console.log(tokenW)
         console.log(postId)
         try {
-            res = await axios.post(`http://localhost:8080/api/post/${postId}/comment/`, {
+            await axios.post(`http://localhost:8080/api/post/${postId}/comment/`, {
+                textContent: comment,
+            }, {
                 headers: {
-                    authorization: `Bearer ${tokenW}`,
+                    Authorization: `Bearer ${tokenW}`,
                 },
             })
+
+            const updatedComments = await getComments();
+            setCommentsData(updatedComments.data);
+
         } catch (error) {
             console.error(error);
             throw error;
@@ -80,7 +86,7 @@ export default function Comment({ postId }) {
             >
                 { isOpen ? <span>Cacher les commentaires </span> : <span>Afficher les commentaires</span>}
             </button>
-            {isOpen ? (
+            {isOpen && (
                 isLoading ? (
                     <span> Les commentaires se chargent </span>
                 ) : commentsData.length !== 0 ? (
@@ -92,10 +98,10 @@ export default function Comment({ postId }) {
                                 deleteComment(item.id)}}>
                                 Supprimer
                             </button>
-                           
+
                         </div>
-                        
-                        
+
+
                          </div>
 
 
@@ -104,15 +110,16 @@ export default function Comment({ postId }) {
                 ) : (
                     <span>No comments</span>
                 )
-            ) : (
-                <div className="createComment" >
-                    < input placeholder="écrire un commentaire"
-                    className="createComment"
-                    value={comment}
-                    onChange={handleChange} 
-                    />
-                
-                <button 
+            )}
+
+            <div className="createComment" >
+                < input placeholder="écrire un commentaire"
+                        className="createComment"
+                        value={comment}
+                        onChange={handleChange}
+                />
+
+                <button
                     onClick={()=>{
                         handleSubmit(postId)
                     }}
@@ -120,8 +127,7 @@ export default function Comment({ postId }) {
                 >
                     Partager
                 </button>
-                </div>
-            )}
+            </div>
         </div>
     );
 }

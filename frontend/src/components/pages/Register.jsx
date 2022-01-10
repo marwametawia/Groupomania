@@ -1,8 +1,10 @@
 import "./register.css";
+import React from 'react';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {toast} from 'react-hot-toast';
 
 export default function Register() {
     const [email, setEmail] = useState("");
@@ -23,7 +25,7 @@ export default function Register() {
     function handleLastName(e) {
         setLastName(e.target.value);
     }
-    
+
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -40,14 +42,16 @@ export default function Register() {
                 lastName,
                 email,
                 password,
-                
+
             });
         } catch (error) {
             throw error;
         }
         console.log(res.data);
 
-        
+        toast.success("Account successfully created !");
+
+
         navigate("/login");
     }
 
@@ -65,10 +69,10 @@ export default function Register() {
                 <input placeholder="nom de famille" className="loginInput" onChange={handleLastName} value={lastName}/>
                 <input placeholder="prénom" className="loginInput" onChange={handleFirstName} value={firstName}/>
                         <input placeholder="Email" className="loginInput" onChange={handleEmail} value={email}/>
-                        <input placeholder="Mot de passe" className="loginInput" onChange={handlePassword} value={password} />
+                        <input type={'password'} placeholder="Mot de passe" className="loginInput" onChange={handlePassword} value={password} />
                         <button className="loginButton" type="submit">Créer son compte</button>
 
-                        
+
                     </form>
                 </div>
             </div>

@@ -7,6 +7,7 @@ module.exports = {
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER,
+                onDelete:'CASCADE'
             },
             firstName: {
                 type: Sequelize.STRING,
@@ -25,7 +26,7 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull:false,
             },
-            isAdmin: {
+            isAdmin: { 
                 type: Sequelize.BOOLEAN,
                 defaultValue:false,
                 
@@ -41,6 +42,7 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.DATE,
             },
+            
         });
     },
     down: async (queryInterface, Sequelize) => {

@@ -1,10 +1,10 @@
 import "./share.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 export default function Share() {
     const [post, setPost] = useState("");
     const tokenW = window.localStorage.getItem("token");
-  
+
 
     function handleChange(e) {
         setPost(e.target.value);
@@ -14,7 +14,7 @@ export default function Share() {
         let res;
         try {
             res = await axios.post("http://localhost:8080/api/post/", {textContent: post}, {
-                
+
                 headers: {
                     authorization: `Bearer ${tokenW}`,
                 },

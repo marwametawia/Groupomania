@@ -1,12 +1,15 @@
 import "./profile.css"
+import React from 'react';
 import Header from "../layout/Header/Header"
 import { Person, Notifications } from "@material-ui/icons";
+import {toast, Toaster} from 'react-hot-toast';
 
 
 import { Link, useNavigate } from "react-router-dom";
 
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {MainLayout} from '../layout/MainLayout';
 
 export default function Profile() {
 
@@ -14,10 +17,12 @@ export default function Profile() {
     const userData = JSON.parse(window.localStorage.getItem("userData"))
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [password, setPassword] = useState("");
+
     const [userId, setUserId] = useState("")
     const tokenW = window.localStorage.getItem("token");
     //const userData = JSON.parse(window.localStorage.getItem("userData"))
-   
+
 
     useEffect(() => {
         async function getProfile() {
@@ -46,7 +51,9 @@ export default function Profile() {
             getProfile();
         }
     }, [tokenW]);
-
+    function handlePassword(e){
+        setPassword(e.target.value)
+    }
 
     async function deleteAccount(id) {
         let res
@@ -62,19 +69,53 @@ export default function Profile() {
         } catch (error) {
             throw error;
         }
+        toast.success("Account successfully deleted !");
+
+
+        navigate("/register");
+    }
+    async function changePassword(id, password) {
+        let res
+        try {
+            res = await axios.put(
+                `http://localhost:8080/api/user/${id}`,{
+                    password: password,
+                },
+                {
+                    headers: {
+                        authorization: `Bearer ${tokenW}`,
+                    },
+                }
+            );
+        } catch (error) {
+            throw error;
+        }
+        toast.success("You can use your new password!");
+
+
+        navigate("/login");
     }
 
     return (
-        <> 
-        <Header firstName = {firstName}  lastName={lastName} />
-       
-       <button className="modifyProfile">Modifier mon mot de passe</button>
+        <MainLayout>
+
+
+
+
+
+<input placeholder="changer mon mot de passe" className="changePassword" onChange={handlePassword} value={password}/>
+<button className="deleteAccount" onClick={()=>{
+                                    changePassword(userId,password)
+                                    window.localStorage.removeItem("userData")
+                                    window.localStorage.removeItem("token")
+                                    navigate("/login")
+                                }}>nouveau mot de passe </button>
        <button className="deleteAccount" onClick={()=>{
                                     deleteAccount(userId)
                                     window.localStorage.removeItem("userData")
                                     window.localStorage.removeItem("token")
                                     navigate("/login")
                                 }}>Supprimer mon compte </button>
-        </>
+        </MainLayout>
     )
 }
