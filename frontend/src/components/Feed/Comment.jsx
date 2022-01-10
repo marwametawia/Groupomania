@@ -7,6 +7,7 @@ export default function Comment({ postId }) {
     const [isOpen, setIsOpen] = useState(false);
     const [commentsData, setCommentsData] = useState([]);
     const tokenW = window.localStorage.getItem("token");
+    const [comment, setComment] = useState("");
 
 
     async function deleteComment(commentId) {
@@ -45,6 +46,31 @@ export default function Comment({ postId }) {
         }
     }
 
+
+
+    function handleChange(e) {
+        setComment(e.target.value);
+    }
+
+    async function handleSubmit(postId) {
+        let res;
+        console.log(tokenW)
+        console.log(postId)
+        try {
+            res = await axios.post(`http://localhost:8080/api/post/${postId}/comment/`, {
+                headers: {
+                    authorization: `Bearer ${tokenW}`,
+                },
+            })
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+        console.log(tokenW);
+    }
+
+
+
     return (
         <div>
             <button
@@ -56,7 +82,7 @@ export default function Comment({ postId }) {
             </button>
             {isOpen ? (
                 isLoading ? (
-                    <span> Loading comments </span>
+                    <span> Les commentaires se chargent </span>
                 ) : commentsData.length !== 0 ? (
                     commentsData.map((item) => (
                         <div className="postAuthor"key={item.id}>{item.user? item.user.firstName : "deleted user" }
@@ -66,7 +92,7 @@ export default function Comment({ postId }) {
                                 deleteComment(item.id)}}>
                                 Supprimer
                             </button>
-                            <Comment postId={item.id}/>
+                           
                         </div>
                         
                         
@@ -79,7 +105,22 @@ export default function Comment({ postId }) {
                     <span>No comments</span>
                 )
             ) : (
-                <span> </span>
+                <div className="createComment" >
+                    < input placeholder="écrire un commentaire"
+                    className="createComment"
+                    value={comment}
+                    onChange={handleChange} 
+                    />
+                
+                <button 
+                    onClick={()=>{
+                        handleSubmit(postId)
+                    }}
+                    className="createCommentButton"
+                >
+                    Partager
+                </button>
+                </div>
             )}
         </div>
     );

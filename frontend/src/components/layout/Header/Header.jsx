@@ -3,33 +3,15 @@ import "./header.css";
 import Logo from "../../../assets/icon.png";
 import { Link, useNavigate } from "react-router-dom";
 
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 
-export default function Header() {
-    const navigate= useNavigate();
+
+export default function Header({firstName, lastName}) {
+    
     const userData = JSON.parse(window.localStorage.getItem("userData"))
-    console.log(userData)
-
-    /*useEffect(() => {
-        async function getUserData() {
-            let res;
-            try {
-                 res = await axios.delete(
-                `http://localhost:8080/api/post/${userData.userId}`,
-                {
-                    headers: {
-                        authorization: `Bearer ${tokenW}`,
-                    },
-                }
-            );
-            }catch(error){
-                throw error
-            }
-        }
-    }, [tokenW])*/
-
+    const navigate = useNavigate
     return (
         <div className="headerContainer">
             <div className="headerLeft">
@@ -41,26 +23,27 @@ export default function Header() {
                     />
                 </Link>
             </div>
-            <div className="headerCenter">
-                <span className="logoName">GroupoSocial</span>
-            </div>
+            
             <div className="headerRight">
                 
-                <div className="headerIcons">
-                    <div className="iconItems">
-                        <Person />
+                
+                <div className="headerUserName">{`${userData.firstName} ${userData.lastName}`}</div>
+                    <Link to="/profile"><Person />  </Link>
                         {userData && (
-                            <div>
-                                <span>{`${userData.firstName} ${userData.lastName}`}</span>
-                                <button onClick={()=>{
+                            
+                         
+                               
+                                <button className="disconnectButton" onClick={()=>{
+                                     
                                     window.localStorage.removeItem("userData")
                                     window.localStorage.removeItem("token")
-                                    navigate("/login")
-                                }}>Disconnect</button>
-                            </div>
+                                   navigate("/login")
+                                }}>Se deconnecter</button> 
+                               
+                            
                     )}
-                    </div>
-                </div>
+                    
+                
             </div>
         </div>
     );

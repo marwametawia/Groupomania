@@ -2,14 +2,16 @@ import "./post.css";
 import Comment from "./Comment";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
+import OnePost from "./OnePost";
 
 export default function Post() {
     const [posts, setPosts] = useState([]);
-   
+    
     const navigate = useNavigate();
     const tokenW = window.localStorage.getItem("token");
-  
+
+    
 
     useEffect(() => {
         async function request() {
@@ -57,23 +59,22 @@ export default function Post() {
     return (
         <div className="post">
             <div className="postContainer">
-                <div className="postTop">
-                    <div className="postTopLeft">
-                        <img className="postProfileImg"></img>
-                        <span className="postUserName"></span>
-                        <span className="postDate"></span>
-                    </div>
-                </div>
+              
                 <div className="postCenter">
                     {posts.map((item) => (
-                        <div className="postAuthor"key={item.id}>{item.user? item.user.firstName : "deleted user" }
+                        <div className="postContent"key={item.id} >
+                        <div className="postAuthor">{item.user? item.user.firstName : "deleted user" }
+                        </div>
                         <div className="postText" >
-                            {item.textContent}
-                            <button onClick={()=>{
+                          <span>   {item.textContent} </span>
+                            
+                        </div>
+                        <div className="postContentBottom">
+                        <button onClick={()=>{
                                 deletePost(item.id)}}>
                                 Supprimer
                             </button>
-                            <Comment postId={item.id}/>
+                        <Comment postId={item.id}/>
                         </div>
                         </div>
                     ))}

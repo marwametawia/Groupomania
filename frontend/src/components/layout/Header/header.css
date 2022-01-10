@@ -73,3 +73,7 @@
     object-fit: cover;
     cursor: pointer;
   }
+
+  .disconnectButton{
+    border-radius: 8px;
+  }
