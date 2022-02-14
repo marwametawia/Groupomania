@@ -9,7 +9,8 @@ import {useJWT} from '../../hooks/useJWT';
 
 export default function Post() {
     const [posts, setPosts] = useState([]);
-
+    const isAdmin = false;
+    const isAuthor = false;
     const navigate = useNavigate();
     const tokenW = useJWT();
 
@@ -67,11 +68,11 @@ export default function Post() {
 
                             </div>
                             <div className="postContentBottom">
-                                <button onClick={() => {
+                                {(item.user.isAdmin || isAuthor ) ? <button onClick={() => {
                                     deletePost(item.id)
                                 }}>
                                     Supprimer
-                                </button>
+                                </button> : null }
                                 <Comment postId={item.id}/>
                             </div>
                         </div>
