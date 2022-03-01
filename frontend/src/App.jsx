@@ -11,10 +11,13 @@ import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import {PrivateRoute} from './components/PrivateRoute';
 import {Toaster} from 'react-hot-toast';
-
+import {  QueryClient, QueryClientProvider } from 'react-query'
+const queryClient = new QueryClient();
 
 function App() {
     return (
+        
+        <QueryClientProvider client={queryClient}>
         <div>
             <Toaster/>
             <Router>
@@ -27,6 +30,8 @@ function App() {
                 </Routes>
             </Router>
         </div>
+        </QueryClientProvider>
+       
     )
 }
 
