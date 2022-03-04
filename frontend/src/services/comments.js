@@ -10,9 +10,9 @@ export const getComments = async (token, idPost) => {
     return res.data;
 };
 
-export const deleteComment = async (token, postId, commentId) => {
+export const deleteComment =  (token, postId, commentId) => {
     
-    const res = await axios.delete(
+    return  axios.delete(
         `http://localhost:8080/api/post/${postId}/comment/${commentId}/`,
         {
             headers: {

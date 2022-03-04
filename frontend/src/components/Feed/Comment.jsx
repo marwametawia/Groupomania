@@ -1,7 +1,5 @@
-import axios from "axios";
 import { useState } from "react";
 import "./comment.css";
-import {useJWT} from '../../hooks/useJWT';
 import { useGetComments } from "../../hooks/useGetComments";
 import { useCreateComment } from "../../hooks/useCreateComment";
 import { useDeleteComment } from "../../hooks/useDeleteComment";
@@ -10,7 +8,6 @@ export default function Comment({ postId }) {
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [commentsData, setCommentsData] = useState([]);
-    const token = useJWT();
     const [comment, setComment] = useState("");
     const createComment = useCreateComment();
     const deleteComment = useDeleteComment();
