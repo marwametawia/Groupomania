@@ -1,30 +1,16 @@
 import "./share.css";
 import React, { useState } from "react";
-import axios from "axios";
+import { useCreatePost } from "../../hooks/useCreatePost";
 export default function Share() {
     const [post, setPost] = useState("");
-    const tokenW = window.localStorage.getItem("token");
+    const createPost = useCreatePost();
 
 
     function handleChange(e) {
         setPost(e.target.value);
     }
 
-    async function handleSubmit() {
-        let res;
-        try {
-            res = await axios.post("http://localhost:8080/api/post/", {textContent: post}, {
-
-                headers: {
-                    authorization: `Bearer ${tokenW}`,
-                },
-            });
-        } catch (error) {
-            console.error(error);
-            throw error;
-        }
-        console.log(res);
-    }
+    
 
     return (
         <div className="share">
@@ -37,7 +23,7 @@ export default function Share() {
                 />
                 <button
                     onClick={() => {
-                        handleSubmit();
+                        createPost.mutate(post);
                     }}
                     className="shareButton"
                 >

@@ -2,44 +2,25 @@ import axios from "axios";
 import { useState } from "react";
 import "./comment.css";
 import {useJWT} from '../../hooks/useJWT';
+import { useGetComments } from "../../hooks/useGetComments";
+import { useCreateComment } from "../../hooks/useCreateComment";
+import { useDeleteComment } from "../../hooks/useDeleteComment";
 
 export default function Comment({ postId }) {
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [commentsData, setCommentsData] = useState([]);
-    const tokenW = useJWT();
+    const token = useJWT();
     const [comment, setComment] = useState("");
-
-
-    async function deleteComment(commentId) {
-        let res
-        try {
-            res = await axios.delete(
-                `http://localhost:8080/api/post/${postId}/comment/${commentId}/`,
-                {
-                    headers: {
-                        authorization: `Bearer ${tokenW}`,
-                    },
-                }
-            );
-        } catch (error) {
-            throw error;
-        }
-    }
-
-    async function getComments() {
-        return await axios.get(`http://localhost:8080/api/post/${postId}/comment/`, {
-            headers: {
-                authorization: `Bearer ${tokenW}`,
-            },
-        });
-    }
-
+    const createComment = useCreateComment();
+    const deleteComment = useDeleteComment();
+    
     async function handleCLick() {
         if (!isOpen) {
             setIsOpen(true);
             setIsLoading(true);
-            const res = await getComments();
+            const getComments = useGetComments();
+            const res = await getComments(postId);
             setIsLoading(false);
             setCommentsData(res.data);
         } else {
@@ -53,27 +34,6 @@ export default function Comment({ postId }) {
         setComment(e.target.value);
     }
 
-    async function handleSubmit(postId) {
-        console.log(tokenW)
-        console.log(postId)
-        try {
-            await axios.post(`http://localhost:8080/api/post/${postId}/comment/`, {
-                textContent: comment,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${tokenW}`,
-                },
-            })
-
-            const updatedComments = await getComments();
-            setCommentsData(updatedComments.data);
-
-        } catch (error) {
-            console.error(error);
-            throw error;
-        }
-        console.log(tokenW);
-    }
 
 
 
@@ -95,7 +55,7 @@ export default function Comment({ postId }) {
                         <div className="postText" >
                             {item.textContent}
                             <button onClick={()=>{
-                                deleteComment(item.id)}}>
+                                deleteComment.mutate(postId,item.id)}}>
                                 Supprimer
                             </button>
 
@@ -121,7 +81,7 @@ export default function Comment({ postId }) {
 
                 <button
                     onClick={()=>{
-                        handleSubmit(postId)
+                        createComment.mutate(postId, comment)
                     }}
                     className="createCommentButton"
                 >

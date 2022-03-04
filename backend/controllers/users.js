@@ -11,7 +11,7 @@ exports.signup = (req, res, next) => {
     let firstName = req.body.firstName;
     let email = req.body.email;
     let password = req.body.password;
-    let isAdmin= req.body.isAdmin;
+    let isAdmin = req.body.isAdmin;
     //Champs complet
     if (
         lastName == null ||
@@ -28,12 +28,12 @@ exports.signup = (req, res, next) => {
             .json({ error: "Merci de remplir tous les champs" });
     }
     //verifier si l'user existe dans la BDD
-    db.user.findOne({
-        where: {
-            
-            email: email,
-        },
-    })
+    db.user
+        .findOne({
+            where: {
+                email: email,
+            },
+        })
         .then((userExist) => {
             if (!userExist) {
                 bcrypt
@@ -45,33 +45,30 @@ exports.signup = (req, res, next) => {
                             email: email,
                             password: hash,
                             isAdmin: isAdmin,
-                            
                         });
                         user.save()
                             .then(() =>
-                                res
-                                    .status(201)
-                                    .json({
-                                        message:
-                                            "le compte a été créé avec succès",
-                                    })
+                                res.status(201).json({
+                                    message: "le compte a été créé avec succès",
+                                })
                             )
                             .catch((error) => {
                                 console.log(error);
                                 res.status(400).json({
-                                    error: "Création du compte:échouée",
+                                    error: "Création du compte échouée",
                                 });
                             });
                     })
                     .catch((error) => {
                         console.log(error);
                         res.status(500).json({
-                            error: "Création du compte:échouée",
+                            error: "Création du compte échouée",
                         });
                     });
             } else {
-                console.log(error);
-                return res.status(404).json({ error: "user déjà inscrit" });
+                return res
+                    .status(400)
+                    .json({ error: "user déjà inscrit", code: 1 });
             }
         })
         .catch((error) => {
@@ -82,11 +79,10 @@ exports.signup = (req, res, next) => {
 
 //Se connecter
 exports.login = (req, res, next) => {
-    
-
-    db.user.findOne({
-        where: { email: req.body.email },
-    })
+    db.user
+        .findOne({
+            where: { email: req.body.email },
+        })
 
         .then((user) => {
             if (user) {
@@ -97,7 +93,8 @@ exports.login = (req, res, next) => {
                         if (!valid) {
                             return res
                                 .status(401)
-                                .json({ error: "Mot de passe incorrect" });
+                                .json({ error: "Mot de passe incorrect", code: 2 });
+                                
                         }
 
                         res.status(200).json({
@@ -105,7 +102,6 @@ exports.login = (req, res, next) => {
                             lastName: user.lastName,
                             firstName: user.firstName,
                             isAdmin: user.isAdmin,
-                            
 
                             token: jwt.sign(
                                 { userId: user.id, isAdmin: user.isAdmin },
@@ -116,17 +112,17 @@ exports.login = (req, res, next) => {
                     })
                     .catch((error) => {
                         console.log(error);
-                        res.status(500).json({ error: "connexion échouée" });
+                        res.status(500).json({ error: "connexion échouée", code: 3 });
                     });
             } else {
                 return res
                     .status(404)
-                    .json({ error: "veuillez créer un compte" });
+                    .json({ error: "veuillez créer un compte", code:4});
             }
         })
         .catch((error) => {
             console.log(error);
-            res.status(500).json({ error: "connexion échouée" });
+            res.status(500).json({ error: "connexion échouée", code:1 });
         });
 };
 
@@ -134,19 +130,20 @@ exports.login = (req, res, next) => {
 // Se voir
 exports.getUserProfile = (req, res, next) => {
     const id = req.params.id;
-    db.user.findOne({
-        attributes: [
-            "id",
-            "lastName",
-            "firstName",
-            "email",
-            "avatar",
-            "isAdmin",
-            "createdAt",
-            "updatedAt",
-        ],
-        where: { id: id },
-    })
+    db.user
+        .findOne({
+            attributes: [
+                "id",
+                "lastName",
+                "firstName",
+                "email",
+                "avatar",
+                "isAdmin",
+                "createdAt",
+                "updatedAt",
+            ],
+            where: { id: id },
+        })
         .then((user) => {
             if (user) {
                 res.status(200).json(user);
@@ -190,14 +187,16 @@ exports.modifyUserProfile = async (req, res, next) => {
     }
     console.log(userObject);
 
-    db.user.findOne({
-        where: { id: userId },
-    })
+    db.user
+        .findOne({
+            where: { id: userId },
+        })
         .then((userFound) => {
-            if (req.params.id == userId ) {
-                db.user.update(userObject, {
-                    where: { id: userId },
-                })
+            if (req.params.id == userId) {
+                db.user
+                    .update(userObject, {
+                        where: { id: userId },
+                    })
                     .then(() =>
                         res.status(200).json({ message: "Profil mis à jour" })
                     )
@@ -225,15 +224,17 @@ exports.deleteAccount = (req, res, next) => {
     const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
     const userId = decodedToken.userId;
     const isAdmin = decodedToken.isAdmin;
-    db.user.findOne({
-        attributes: ['id'],
-        where: { id: id },
-    })
+    db.user
+        .findOne({
+            attributes: ["id"],
+            where: { id: id },
+        })
         .then((user) => {
             if (id == userId || isAdmin) {
-                db.user.destroy({
-                    where: { id: id },
-                })
+                db.user
+                    .destroy({
+                        where: { id: id },
+                    })
                     .then(() =>
                         res.status(200).json({ message: "Compte supprimé" })
                     )
@@ -245,7 +246,9 @@ exports.deleteAccount = (req, res, next) => {
             } else {
                 return res
                     .status(404)
-                    .json({ error: "vous n'avez pas le droit de supprimer ce compte" });
+                    .json({
+                        error: "vous n'avez pas le droit de supprimer ce compte",
+                    });
             }
         })
         .catch((error) => {

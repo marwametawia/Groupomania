@@ -11,20 +11,20 @@ export const getPosts = async (token) => {
     return res.data;
 };
 
-export function deletePost(postId, tokenW) {
+export function deletePost(postId, token) {
     return axios.delete(`http://localhost:8080/api/post/${postId}`, {
         headers: {
-            authorization: `Bearer ${tokenW}`,
+            authorization: `Bearer ${token}`,
         },
     });
 }
 
-export function share(tokenW, text) {
+export function share(text, token) {
 
     return axios.post("http://localhost:8080/api/post/", {textContent: text}, {
 
                 headers: {
-                    authorization: `Bearer ${tokenW}`,
+                    authorization: `Bearer ${token}`,
                 },
             });
 }

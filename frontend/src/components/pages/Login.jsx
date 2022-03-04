@@ -37,10 +37,16 @@ export default function Login({setToken}) {
 
             toast.success("Nice to see you again.");
         }catch (error) {
-            toast.error("Error while login in.");
-            throw error
+            if (error.response.data?.code === 1) {
+                toast.error("Mot de passe incorrect");
+               
+            } else {
+                console.log(error.response.data.code);
+                toast.error("veuillez reessayer");
+                throw error;
+            }
         }
-        console.log(res.data)
+       
 
         window.localStorage.setItem("token", res.data.token)
         window.localStorage.setItem("userData", JSON.stringify(res.data))

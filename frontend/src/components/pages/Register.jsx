@@ -29,7 +29,8 @@ export default function Register() {
         const regexMail =
             /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
         const lettersOnly = /^[a-zA-Z]+$/i;
-        const validePassword = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
+        const validePassword =
+            /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
         e.preventDefault();
         if (
             email === "" ||
@@ -53,7 +54,9 @@ export default function Register() {
             return;
         }
         if (!validePassword.test(password)) {
-            toast.error("Le mot de passe doit contenir au minimum 8 caractères dont au moins : 1 miniscule 1 majuscule 1chiffre 1caractère spécial   ");
+            toast.error(
+                "Le mot de passe doit contenir au minimum 8 caractères dont au moins : 1 miniscule 1 majuscule 1chiffre 1caractère spécial   "
+            );
             return;
         }
         let res;
@@ -66,8 +69,14 @@ export default function Register() {
                 password,
             });
         } catch (error) {
-            throw error;
+            if (error.response.data?.code === 1) {
+                toast.error("Cette adresse email a déjà été utilisée");
+                console.log(error.response.data.code);
+            } else {
+                throw error;
+            }
         }
+
         console.log(res.data);
 
         toast.success("Account successfully created !");
