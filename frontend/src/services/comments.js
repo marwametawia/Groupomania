@@ -22,7 +22,7 @@ export const deleteComment =  (token, postId, commentId) => {
     );
 }
 
-export function comment(token, postId, text) {
+export function createComment(token, postId, text) {
 
    return axios.post(`http://localhost:8080/api/post/${postId}/comment/`, {
         textContent: text,

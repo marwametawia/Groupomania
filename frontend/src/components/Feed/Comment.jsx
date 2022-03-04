@@ -5,42 +5,20 @@ import { useCreateComment } from "../../hooks/useCreateComment";
 import { useDeleteComment } from "../../hooks/useDeleteComment";
 
 export default function Comment({ postId }) {
-    const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [commentsData, setCommentsData] = useState([]);
     const [comment, setComment] = useState("");
     const createComment = useCreateComment();
     const deleteComment = useDeleteComment();
-    
-    async function handleCLick() {
-        if (!isOpen) {
-            setIsOpen(true);
-            setIsLoading(true);
-            const getComments = useGetComments();
-            const res = await getComments(postId);
-            setIsLoading(false);
-            setCommentsData(res.data);
-        } else {
-            setIsOpen(false)
-        }
-    }
-
+    const {data:commentsData,isLoading} = useGetComments(postId, isOpen);
 
 
     function handleChange(e) {
         setComment(e.target.value);
     }
 
-
-
-
     return (
         <div>
-            <button
-                onClick={() => {
-                    handleCLick();
-                }}
-            >
+            <button onClick={() => setIsOpen(!isOpen) } >
                 { isOpen ? <span>Cacher les commentaires </span> : <span>Afficher les commentaires</span>}
             </button>
             {isOpen && (
@@ -51,10 +29,10 @@ export default function Comment({ postId }) {
                         <div className="postAuthor"key={item.id}>{item.user? item.user.firstName : "deleted user" }
                         <div className="postText" >
                             {item.textContent}
-                            <button onClick={()=>{
-                                deleteComment.mutate(postId,item.id)}}>
+                           { <button onClick={()=>{
+                                deleteComment.mutate({postId, commentId:item.id})}}>
                                 Supprimer
-                            </button>
+                            </button>}
 
                         </div>
 
@@ -78,7 +56,7 @@ export default function Comment({ postId }) {
 
                 <button
                     onClick={()=>{
-                        createComment.mutate(postId, comment)
+                        createComment.mutate({postId, text: comment})
                     }}
                     className="createCommentButton"
                 >
