@@ -3,6 +3,7 @@ import "./comment.css";
 import { useGetComments } from "../../hooks/useGetComments";
 import { useCreateComment } from "../../hooks/useCreateComment";
 import { useDeleteComment } from "../../hooks/useDeleteComment";
+import { useAuthenticatedUser } from "../../hooks/useAuthenticatedUser";
 
 export default function Comment({ postId }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,10 +30,13 @@ export default function Comment({ postId }) {
                         <div className="postAuthor"key={item.id}>{item.user? item.user.firstName : "deleted user" }
                         <div className="postText" >
                             {item.textContent}
-                           { <button onClick={()=>{
+
+                         { (useAuthenticatedUser().userId === item.userId || useAuthenticatedUser().isAdmin ) ? 
+                         <button onClick={()=>{
+                             
                                 deleteComment.mutate({postId, commentId:item.id})}}>
                                 Supprimer
-                            </button>}
+                            </button> : null }
 
                         </div>
 
