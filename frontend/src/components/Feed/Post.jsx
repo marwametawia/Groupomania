@@ -3,6 +3,7 @@ import React from "react";
 import Comment from "./Comment";
 import { usePosts } from "../../hooks/usePosts";
 import { useDeletePost } from "../../hooks/useDeletePost";
+import { useAuthenticatedUser } from "../../hooks/useAuthenticatedUser";
 
 export default function Post() {
     const isAdmin = false;
@@ -26,14 +27,16 @@ export default function Post() {
                                     <span> {item.textContent} </span>
                                 </div>
                                 <div className="postContentBottom">
+                                { (useAuthenticatedUser().userId === item.userId || useAuthenticatedUser().isAdmin ) ? 
+
                                     <button
                                         onClick={() => {
                                             deletePost.mutate(item.id);
                                         }}
                                     >
                                         Supprimer
-                                    </button>
-
+                                    </button> : null 
+}
                                     <Comment postId={item.id} />
                                 </div>
                             </div>
