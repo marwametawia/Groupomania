@@ -10,6 +10,7 @@ export default function Post() {
     const isAuthor = false;
     const posts = usePosts();
     const deletePost = useDeletePost();
+    const userData = useAuthenticatedUser();
 
     return (
         <div className="post">
@@ -20,28 +21,36 @@ export default function Post() {
                             <div className="postContent" key={item.id}>
                                 <div className="postAuthor">
                                     {item.user
-                                        ? item.user.firstName
+                                        ? item.user.firstName +
+                                          " " +
+                                          item.user.lastName
                                         : "deleted user"}
                                 </div>
                                 <div className="postText">
                                     <span> {item.textContent} </span>
                                 </div>
                                 <div className="postContentBottom">
-                                { (useAuthenticatedUser().userId === item.userId || useAuthenticatedUser().isAdmin ) ? 
+                                    {userData.userId === item.userId ||
+                                    userData.isAdmin ? (
+                                        <button
+                                            onClick={() => {
+                                                deletePost.mutate(item.id);
+                                            }}
+                                        >
+                                            Supprimer
+                                        </button>
+                                    ) : null}
+                                   
 
-                                    <button
-                                        onClick={() => {
-                                            deletePost.mutate(item.id);
-                                        }}
-                                    >
-                                        Supprimer
-                                    </button> : null 
-}
                                     <Comment postId={item.id} />
                                 </div>
+                                {userData.isAdmin? " userId:"+ " "+ item.userId
+                                    : null}
                             </div>
                         ))}
+                        
                 </div>
+                
             </div>
         </div>
     );

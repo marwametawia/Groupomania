@@ -11,6 +11,8 @@ export default function Comment({ postId }) {
     const createComment = useCreateComment();
     const deleteComment = useDeleteComment();
     const {data:commentsData,isLoading} = useGetComments(postId, isOpen);
+    const userData = useAuthenticatedUser();
+
 
 
     function handleChange(e) {
@@ -31,7 +33,7 @@ export default function Comment({ postId }) {
                         <div className="postText" >
                             {item.textContent}
 
-                         { (useAuthenticatedUser().userId === item.userId || useAuthenticatedUser().isAdmin ) ? 
+                         { (userData.userId === item.userId || userData.isAdmin ) ? 
                          <button onClick={()=>{
                              
                                 deleteComment.mutate({postId, commentId:item.id})}}>

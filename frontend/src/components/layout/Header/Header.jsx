@@ -4,8 +4,6 @@ import Logo from "../../../assets/icon.png";
 import { Link, useNavigate } from "react-router-dom";
 import {Toaster} from 'react-hot-toast';
 
-import {useEffect, useState} from "react";
-import axios from "axios";
 import {useAuthenticatedUser} from '../../../hooks/useAuthenticatedUser';
 
 

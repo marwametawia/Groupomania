@@ -10,6 +10,9 @@ import { Link, useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {MainLayout} from '../layout/MainLayout';
+import { useJWT } from "../../hooks/useJWT";
+import { useAuthenticatedUser } from "../../hooks/useAuthenticatedUser";
+useAuthenticatedUser
 
 export default function Profile() {
 
@@ -18,9 +21,10 @@ export default function Profile() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
-
+    const [userIdToRemove, setUserIdToRemove] = useState("");
     const [userId, setUserId] = useState("")
-    const tokenW = window.localStorage.getItem("token");
+    const token = useJWT();
+    const isAdmin = useAuthenticatedUser().isAdmin;
     //const userData = JSON.parse(window.localStorage.getItem("userData"))
 
 
@@ -30,7 +34,7 @@ export default function Profile() {
             try {
                 res = await axios.get(`http://localhost:8080/api/user/${userData.userId}/`, {
                     headers: {
-                        authorization: `Bearer ${tokenW}`,
+                        authorization: `Bearer ${token}`,
                     },
                 });
             } catch (error) {
@@ -45,16 +49,18 @@ export default function Profile() {
             console.log(userId)
         }
 
-        if (!tokenW || tokenW === "") {
+        if (!token || token === "") {
             navigate("/login");
         } else {
             getProfile();
         }
-    }, [tokenW]);
+    }, [token]);
     function handlePassword(e){
         setPassword(e.target.value)
     }
-
+function handleUserIdToRemove(e){
+setUserIdToRemove(e.target.value)
+}
     async function deleteAccount(id) {
         let res
         try {
@@ -62,7 +68,7 @@ export default function Profile() {
                 `http://localhost:8080/api/user/${id}`,
                 {
                     headers: {
-                        authorization: `Bearer ${tokenW}`,
+                        authorization: `Bearer ${token}`,
                     },
                 }
             );
@@ -72,7 +78,7 @@ export default function Profile() {
         toast.success("Account successfully deleted !");
 
 
-        navigate("/register");
+        {!isAdmin? navigate("/register"): null}
     }
     async function changePassword(id, password) {
         let res
@@ -83,7 +89,7 @@ export default function Profile() {
                 },
                 {
                     headers: {
-                        authorization: `Bearer ${tokenW}`,
+                        authorization: `Bearer ${token}`,
                     },
                 }
             );
@@ -116,6 +122,25 @@ export default function Profile() {
                                     window.localStorage.removeItem("token")
                                     navigate("/login")
                                 }}>Supprimer mon compte </button>
+                                {isAdmin? 
+                                <div>
+
+
+
+<input placeholder="entrer l'ID de l'user à supprimer" className="changePassword" onChange={handleUserIdToRemove} value={userIdToRemove} />
+<button className="deleteAccount" onClick={()=>{
+                                    deleteAccount(userIdToRemove)
+                            
+                                }}>supprimer le compte d'un utilisateur </button>
+
+
+                                </div>
+
+
+
+
+                                    : null}
+                                
         </MainLayout>
     )
 }
