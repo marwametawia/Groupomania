@@ -6,8 +6,7 @@ import { useDeletePost } from "../../hooks/useDeletePost";
 import { useAuthenticatedUser } from "../../hooks/useAuthenticatedUser";
 
 export default function Post() {
-    const isAdmin = false;
-    const isAuthor = false;
+    
     const posts = usePosts();
     const deletePost = useDeletePost();
     const userData = useAuthenticatedUser();
