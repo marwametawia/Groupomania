@@ -3,6 +3,17 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    
+}
+@media only screen and (max-width: 480px){
+    .postContent{
+        width: 15rem;
+    }
+}
+@media only screen and (min-width: 480px){
+    .postContent{
+        width: 25rem;
+    }
 }
 
 .postContent{
@@ -10,8 +21,23 @@
     flex-direction: column;
     align-items: center;
     border-style: solid;
-    border-color: rgba(255, 0, 0, 0.788);
+    border-color: gray;
     padding: 1rem;
     margin: 1rem;
     border-radius: 1rem;
+    
+    
+}
+.postText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-color: grey;
+    padding: 0.25rem;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+.postAuthor{
+    text-transform: capitalize;
 }

@@ -77,3 +77,6 @@
   .disconnectButton{
     border-radius: 8px;
   }
+  .headerUserName{
+    text-transform: uppercase;
+  }

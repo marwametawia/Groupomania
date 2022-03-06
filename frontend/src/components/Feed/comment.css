@@ -1,0 +1,12 @@
+.comment{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.commentBox{
+    border-style: solid;
+    border-color: gray;
+    padding: 0.25rem;
+    
+}

@@ -118,7 +118,7 @@ export default function Profile() {
                 value={password}
             />
             <button
-                className="deleteAccount"
+                className="profileButton"
                 onClick={() => {
                     changePassword(userId, password);
                    
@@ -127,7 +127,7 @@ export default function Profile() {
                 nouveau mot de passe
             </button>
             <button
-                className="deleteAccount"
+                className="profileButton"
                 onClick={() => {
                     deleteAccount(userId);
                     window.localStorage.removeItem("userData");
@@ -146,7 +146,7 @@ export default function Profile() {
                         value={userIdToRemove}
                     />
                     <button
-                        className="deleteAccount"
+                        className="profileButton"
                         onClick={() => {
                             deleteAccount(userIdToRemove);
                         }}

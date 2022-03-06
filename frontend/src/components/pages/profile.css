@@ -1,14 +1,27 @@
-.content{
+.content {
+    
     display: flex;
     flex-direction: column;
-    padding: 2rem;}
+    align-items: center;
+    
+    padding: 1rem;
+    margin: 1rem;
+    
+}
 
-    .changePassword, .userToRemove {
-        width: 10rem;
-        padding: 0.2rem;
-        
-    }
+.changePassword,
+.userToRemove {
+    width: 10rem;
+    padding: 0.2rem;
+    margin: 1rem;
 
-    .button{
-        width: 1rem;
-    }
+}
+
+.profileButton {
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+    padding: 0.25rem;
+    margin: 0.5rem;
+}

@@ -20,7 +20,7 @@ export default function Comment({ postId }) {
     }
 
     return (
-        <div>
+        <div className="comment">
             <button onClick={() => setIsOpen(!isOpen) } >
                 { isOpen ? <span>Cacher les commentaires </span> : <span>Afficher les commentaires</span>}
             </button>
@@ -29,8 +29,8 @@ export default function Comment({ postId }) {
                     <span> Les commentaires se chargent </span>
                 ) : commentsData.length !== 0 ? (
                     commentsData.map((item) => (
-                        <div className="postAuthor"key={item.id}>{item.user? item.user.firstName : "deleted user" }
-                        <div className="postText" >
+                        <div className="commentBox"> <div className="commentAuthor"key={item.id}>{item.user? item.user.firstName : "deleted user" }
+                        <div className="commentText" >
                             {item.textContent}
 
                          { (userData.userId === item.userId || userData.isAdmin ) ? 
@@ -43,6 +43,7 @@ export default function Comment({ postId }) {
                         </div>
 
 
+                         </div>
                          </div>
 
 
