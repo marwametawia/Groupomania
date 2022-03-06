@@ -78,6 +78,15 @@ export default function Profile() {
     }
     async function changePassword(id, password) {
         let res;
+        const validePassword =
+            /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
+        if (!validePassword.test(password)) {
+            toast.error(
+                "Le mot de passe doit contenir au minimum 8 caractères dont au moins : 1 miniscule 1 majuscule 1chiffre 1caractère spécial   "
+            );
+            return;
+        }
+        else {
         try {
             res = await axios.put(
                 `http://localhost:8080/api/user/${id}`,
@@ -94,12 +103,14 @@ export default function Profile() {
             throw error;
         }
         toast.success("You can use your new password!");
-
+        window.localStorage.removeItem("userData");
+        window.localStorage.removeItem("token");
         navigate("/login");
-    }
+    }}
 
     return (
         <MainLayout>
+            <div className="content">
             <input
                 placeholder="changer mon mot de passe"
                 className="changePassword"
@@ -110,12 +121,10 @@ export default function Profile() {
                 className="deleteAccount"
                 onClick={() => {
                     changePassword(userId, password);
-                    window.localStorage.removeItem("userData");
-                    window.localStorage.removeItem("token");
-                    navigate("/login");
+                   
                 }}
             >
-                nouveau mot de passe{" "}
+                nouveau mot de passe
             </button>
             <button
                 className="deleteAccount"
@@ -132,7 +141,7 @@ export default function Profile() {
                 <div>
                     <input
                         placeholder="entrer l'ID de l'user à supprimer"
-                        className="changePassword"
+                        className="userToRemove"
                         onChange={handleUserIdToRemove}
                         value={userIdToRemove}
                     />
@@ -146,6 +155,7 @@ export default function Profile() {
                     </button>
                 </div>
             ) : null}
+            </div>
         </MainLayout>
     );
 }

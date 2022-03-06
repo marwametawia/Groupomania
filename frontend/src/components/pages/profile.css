@@ -1,0 +1,14 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;}
+
+    .changePassword, .userToRemove {
+        width: 10rem;
+        padding: 0.2rem;
+        
+    }
+
+    .button{
+        width: 1rem;
+    }
